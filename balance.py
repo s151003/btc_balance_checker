@@ -35,24 +35,33 @@ def btccom(address):
         return b['data']['received']
 
 def balance(address):
-        rand = random.randint(0,6)
+        result = 0
+        p = ""
+        rand = random.randint(0,5)
         if rand == 0:
+                p += "bf"
                 result = bitflyer(address)
         elif rand == 1:
+                p += "sp"
                 result = spectro(address)
         elif rand == 2:
+                p += "blockc"
                 result = blockchain(address)
         elif rand == 3:
+                p += "chain"
                 result = chainz(address)
         elif rand == 4:
+                p += "chainso"
                 result = chainso(address)
         elif rand == 5:
+                p +="btccom"
                 result = btccom(address)
-
+        print(p)
         if result == None:
-                balance(address)
-        else:
                 return result
+                #balance(address)
+        else:
+                return result,p
 if __name__ == '__main__':
         p = Pool(4)
         bal = p.map(balance,address)
