@@ -50,4 +50,6 @@ def balance(address):
                 return btccom(address)
 if __name__ == '__main__':
         p = Pool(4)
-        print(p.map(balance,address))
+        bal = p.map(balance,address)
+        for i in range(0,len(bal)):
+                print("Address:",address[i],"Balance:",str(bal[i]))
